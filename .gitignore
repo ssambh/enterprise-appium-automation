@@ -1,0 +1,25 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# IDE configuration
+.idea/
+
+# Pytest cache
+.pytest_cache/
+
+# Allure reports
+allure-results/
+resources/allure-results/
+
+# Log files
+*.log
+
+# HTML coverage reports
+htmlcov/
+
+# macOS specific
+.DS_Store

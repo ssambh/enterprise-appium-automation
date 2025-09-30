@@ -1,0 +1,19 @@
+{
+  "local_android_emulator": {
+      "platformName":"Android",
+      "platformVersion":"15",
+      "automationName":"UiAutomator2",
+      "appPackage":"io.appium.android.apis",
+      "appActivity":".ApiDemos"
+  },
+  "local_android_real_device": {
+    "platformName":"Android",
+    "appium:udid":"R5CR819ABCD",
+    "appium:app":"/path/on/your/computer/to/app.apk",
+    "appium:automationName":"UiAutomator2"
+  },
+  "aws_android": {
+    "platformName":"Android",
+    "appium:automationName":"UiAutomator2"
+  }
+}
