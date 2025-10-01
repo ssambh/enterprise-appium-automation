@@ -1,4 +1,4 @@
-name: Python CI
+name: Android CI
 
 on:
   push:
@@ -7,35 +7,34 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write # To push to gh-pages branch
+  test:
+    runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.13'
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Install Allure
-      uses: allure-framework/github-actions/setup-allure-commandline@v1
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run tests
-      run: |
-        pytest
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Generate Allure report
-      run: |
-        allure generate resources/allure-results --clean -o allure-report
+      - name: Download Android App
+        run: wget https://github.com/appium/android-apidemos/releases/download/v3.1.0/ApiDemos-debug.apk
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: allure-report
+      - name: Install and run Appium
+        run: |
+          npm install -g appium
+          appium driver install uiautomator2
+          appium &
+
+      - name: Run tests on Android Emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34 # You can change this to your desired API level
+          script: .venv/bin/pytest
