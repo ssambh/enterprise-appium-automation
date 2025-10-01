@@ -36,5 +36,8 @@ jobs:
       - name: Run tests on Android Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
+          target: google_apis
+          arch: arm64-v8a
+          emulator-boot-timeout: 120
           api-level: 34 # You can change this to your desired API level
           script: .venv/bin/pytest
