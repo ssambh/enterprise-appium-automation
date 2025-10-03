@@ -24,7 +24,7 @@ def driver(env):#This method depends on env() function
         capabilities = json.load(f)[env]
     options = AppiumOptions()
     options.load_capabilities(capabilities)
-    appium_server = 'http://localhost:4723' if 'local' in env else None
+    appium_server = 'http://localhost:4723'
     driver_instance = webdriver.Remote(appium_server, options=options)
     # This will pass the driver instance to the tests
     yield driver_instance
