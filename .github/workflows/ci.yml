@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -23,11 +23,11 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            /Users/runner/Library/Android/sdk/platforms
-            /Users/runner/Library/Android/sdk/system-images
-            /Users/runner/Library/Android/sdk/build-tools
-            /Users/runner/Library/Android/sdk/platform-tools
-            /Users/runner/Library/Android/sdk/emulator
+            /usr/local/lib/android/sdk/platforms
+            /usr/local/lib/android/sdk/system-images
+            /usr/local/lib/android/sdk/build-tools
+            /usr/local/lib/android/sdk/platform-tools
+            /usr/local/lib/android/sdk/emulator
           key: android-sdk-34-${{ runner.os }}
           restore-keys: |
             android-sdk-34-
