@@ -42,4 +42,4 @@ jobs:
           script:
             appium &
             sleep 15
-            pytest
+            pytest -o env=github_actions_android

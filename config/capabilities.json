@@ -15,5 +15,11 @@
   "aws_android": {
     "platformName":"Android",
     "appium:automationName":"UiAutomator2"
+  },
+  "github_actions_android": {
+   "platformName": "Android",
+   "platformVersion": "14",
+   "automationName": "UiAutomator2",
+   "app": "ApiDemos-debug.apk"
   }
 }
