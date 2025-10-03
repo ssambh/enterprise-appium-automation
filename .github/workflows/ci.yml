@@ -40,6 +40,12 @@ jobs:
       - name: Download Android App
         run: wget https://github.com/appium/android-apidemos/releases/download/v3.1.0/ApiDemos-debug.apk
 
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger
+
       - name: Install and run Appium
         run: |
           npm install -g appium
@@ -52,7 +58,6 @@ jobs:
           arch: x86_64
           emulator-boot-timeout: 120
           api-level: 34 # You can change this to your desired API level
-          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script:
             appium &
             sleep 15
