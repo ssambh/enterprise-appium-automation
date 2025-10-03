@@ -58,17 +58,4 @@ jobs:
           arch: x86_64
           emulator-boot-timeout: 120
           api-level: 34 # You can change this to your desired API level
-          script: |
-            appium &
-            echo "Waiting for Appium server to start..."
-            timeout=60
-            while ! curl -s -o /dev/null http://localhost:4723/status && [ $timeout -gt 0 ]; do
-              sleep 1
-              timeout=$((timeout-1))
-            done
-            if [ $timeout -eq 0 ]; then
-              echo "Appium server did not start in time."
-              exit 1
-            fi
-            echo "Appium server started."
-            pytest -o env=github_actions_android
+          script: appium & echo "Waiting for Appium server to start..."; timeout=60; while ! curl -s -o /dev/null http://localhost:4723/status && [ $timeout -gt 0 ]; do sleep 1; timeout=$((timeout-1)); done; if [ $timeout -eq 0 ]; then echo "Appium server did not start in time."; exit 1; fi; echo "Appium server started."; pytest -o env=github_actions_android
