@@ -41,5 +41,6 @@ jobs:
           api-level: 34 # You can change this to your desired API level
           script:
             appium &
+            # remove this sleep time and make it more efficient to find if the appium server has started.
             sleep 15
-            .venv/bin/pytest
+            pytest
