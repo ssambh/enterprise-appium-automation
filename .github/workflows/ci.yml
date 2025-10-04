@@ -13,6 +13,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # To push report to gh-pages branch
 
     steps:
       - name: Checkout
@@ -37,9 +39,10 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger
 
-      - name: Install and run Appium
+      - name: Install Tools
         run: |
           npm install -g appium
+          npm install -g allure-commandline
           appium driver install uiautomator2
 
       - name: Run tests on Android Emulator
@@ -50,3 +53,12 @@ jobs:
           emulator-boot-timeout: 120
           api-level: 34 # You can change this to your desired API level
           script: pytest -o env=github_actions_android
+
+      - name: Generate and Publish Allure Report
+        uses: simple-elf/allure-report-action@v1.7
+        if: always()
+        with:
+          allure_results: resources/allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
