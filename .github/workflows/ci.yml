@@ -54,12 +54,14 @@ jobs:
           api-level: 34 # You can change this to your desired API level
           script: pytest -o env=github_actions_android
 
-      - name: Generate and Publish Allure Report
-        uses: simple-elf/allure-report-action@v1.7
+      - name: Generate Allure Report
         if: always()
+        run: allure generate resources/allure-results --clean -o allure-report
+
+      - name: Deploy Allure Report to GH Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          allure_results: resources/allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
-          allure_history: allure-history
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          publish_branch: gh-pages
