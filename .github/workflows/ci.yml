@@ -1,10 +1,14 @@
 name: Android CI
 
 on:
+  # Automatically run on pushes and pull requests to the main branch
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
+  # Allow manual runs from the Actions tab in GitHub
+  workflow_dispatch:
 
 jobs:
   test:
@@ -24,7 +28,6 @@ jobs:
         with:
           path: |
             /usr/local/lib/android/sdk/platforms
-            /usr/local/lib/android/sdk/system-images
             /usr/local/lib/android/sdk/build-tools
             /usr/local/lib/android/sdk/platform-tools
             /usr/local/lib/android/sdk/emulator
