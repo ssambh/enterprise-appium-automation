@@ -65,3 +65,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
           publish_branch: gh-pages
+          destination_dir: ${{ github.run_id }}
+
+      - name: Output Report URL
+        if: always()
+        run: |
+          echo "### Allure Report URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
