@@ -1,4 +1,4 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","3557","Testing Accessibility node querying","test","Sat Oct 04 21:41:02 UTC 2025","passed","Sat Oct 04 21:41:05 UTC 2025","TestingAccessibility","test_accessibility","",""
-"","0","Testing app launch","test","Sat Oct 04 21:40:42 UTC 2025","passed","Sat Oct 04 21:40:42 UTC 2025","TestingAccessibility","test_accessibility","",""
-"","2839","Testing accessibility node provider","test","Sat Oct 04 21:40:52 UTC 2025","passed","Sat Oct 04 21:40:55 UTC 2025","TestingAccessibility","test_accessibility","",""
+"","1","Testing app launch","test","Sat Oct 04 21:47:14 UTC 2025","passed","Sat Oct 04 21:47:14 UTC 2025","TestingAccessibility","test_accessibility","",""
+"","3078","Testing accessibility node provider","test","Sat Oct 04 21:47:22 UTC 2025","passed","Sat Oct 04 21:47:25 UTC 2025","TestingAccessibility","test_accessibility","",""
+"","2998","Testing Accessibility node querying","test","Sat Oct 04 21:47:29 UTC 2025","passed","Sat Oct 04 21:47:32 UTC 2025","TestingAccessibility","test_accessibility","",""
