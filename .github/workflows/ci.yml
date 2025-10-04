@@ -23,18 +23,6 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Cache Android SDK
-        uses: actions/cache@v3
-        with:
-          path: |
-            /usr/local/lib/android/sdk/platforms
-            /usr/local/lib/android/sdk/build-tools
-            /usr/local/lib/android/sdk/platform-tools
-            /usr/local/lib/android/sdk/emulator
-          key: android-sdk-34-${{ runner.os }}
-          restore-keys: |
-            android-sdk-34-
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
