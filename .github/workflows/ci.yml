@@ -25,6 +25,8 @@ jobs:
 
       - name: Cache Android SDK
         uses: actions/cache@v3
+        env:
+          TAR_OPTIONS: --no-same-permissions
         with:
           path: |
             /usr/local/lib/android/sdk/build-tools
