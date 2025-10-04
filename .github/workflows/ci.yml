@@ -27,13 +27,11 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            /usr/local/lib/android/sdk/platforms
             /usr/local/lib/android/sdk/build-tools
             /usr/local/lib/android/sdk/platform-tools
-            /usr/local/lib/android/sdk/emulator
-          key: android-sdk-34-${{ runner.os }}
+          key: android-sdk-tools-${{ runner.os }}
           restore-keys: |
-            android-sdk-34-
+            android-sdk-tools-
 
       - name: Install dependencies
         run: |
