@@ -1,5 +1,6 @@
 {
   "local_android_emulator": {
+      "appium_server_url": "http://localhost:4723",
       "platformName":"Android",
       "platformVersion":"15",
       "automationName":"UiAutomator2",
@@ -7,16 +8,19 @@
       "appActivity":".ApiDemos"
   },
   "local_android_real_device": {
+    "appium_server_url": "http://localhost:4723",
     "platformName":"Android",
     "appium:udid":"R5CR819ABCD",
     "appium:app":"/path/on/your/computer/to/app.apk",
     "appium:automationName":"UiAutomator2"
   },
   "aws_android": {
+    "appium_server_url": "https://your-cloud-provider-url/wd/hub",
     "platformName":"Android",
     "appium:automationName":"UiAutomator2"
   },
   "github_actions_android": {
+   "appium_server_url": "http://localhost:4723",
    "platformName": "Android",
    "platformVersion": "14",
    "automationName": "UiAutomator2",
