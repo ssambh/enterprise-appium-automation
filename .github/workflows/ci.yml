@@ -66,12 +66,7 @@ jobs:
           target: google_apis
           arch: x86_64
           api-level: 34
-          script: |
-            if [ "${{ github.event.inputs.test_suite }}" = "all" ]; then
-              pytest -o env=qa_android
-            else
-              pytest -m "${{ github.event.inputs.test_suite }}" -o env=qa_android
-            fi
+          script: if [ "${{ github.event.inputs.test_suite }}" = "all" ]; then pytest -o env=qa_android; else pytest -m "${{ github.event.inputs.test_suite }}" -o env=qa_android; fi
 
       - name: Generate and Publish Allure Report
         uses: simple-elf/allure-report-action@v1.7
@@ -120,12 +115,7 @@ jobs:
           target: google_apis
           arch: x86_64
           api-level: 34
-          script: |
-            if [ "${{ github.event.inputs.test_suite }}" = "all" ]; then
-              pytest -o env=production_android
-            else
-              pytest -m "${{ github.event.inputs.test_suite }}" -o env=production_android
-            fi
+          script: if [ "${{ github.event.inputs.test_suite }}" = "all" ]; then pytest -o env=production_android; else pytest -m "${{ github.event.inputs.test_suite }}" -o env=production_android; fi
 
       - name: Generate and Publish Allure Report
         uses: simple-elf/allure-report-action@v1.7
