@@ -3,6 +3,7 @@ import json
 import os
 import subprocess
 import time
+import tempfile
 from urllib import request as url_request
 from urllib.error import URLError
 from urllib.parse import urlparse
@@ -30,6 +31,38 @@ def test_config(env):
     with open(capabilities_path) as f:
         all_configs = json.load(f)
     return all_configs[env]
+
+
+@pytest.fixture(scope="session")
+def app_path(test_config):
+    """Downloads the app build and returns the path."""
+    download_url = test_config.get("build_download_url")
+    if not download_url:
+        # If no download URL is specified, assume the app is pre-installed or path is in caps
+        print("No build_download_url found. App will not be downloaded.")
+        # Check for a hardcoded app path in the config as a fallback
+        hardcoded_app_path = test_config.get("app") or test_config.get("appium:app")
+        if hardcoded_app_path:
+            yield hardcoded_app_path
+        else:
+            # If no app path at all, yield None. Appium will use appPackage/appActivity.
+            yield None
+        return
+
+    # Download the app to a temporary file
+    print(f"Downloading app from {download_url}...")
+    with tempfile.NamedTemporaryFile(suffix=".apk", delete=False) as tmp_file:
+        with url_request.urlopen(download_url) as response:
+            tmp_file.write(response.read())
+        downloaded_app_path = tmp_file.name
+        print(f"App downloaded to {downloaded_app_path}")
+
+    yield downloaded_app_path
+
+    # Teardown: clean up the downloaded file
+    if 'downloaded_app_path' in locals():
+        print(f"Cleaning up downloaded app: {downloaded_app_path}")
+        os.remove(downloaded_app_path)
 
 
 @pytest.fixture(scope="session")
@@ -67,7 +100,6 @@ def appium_service(test_config):
         except URLError:
             time.sleep(1)
     else:
-        # If the loop completes without breaking, the server did not start
         appium_process.terminate()
         stdout, stderr = appium_process.communicate()
         print(f"Appium stdout:\n{stdout}")
@@ -83,13 +115,15 @@ def appium_service(test_config):
 
 
 @pytest.fixture
-def driver(test_config, appium_service):
+def driver(test_config, appium_service, app_path):
     """Creates the Appium webdriver instance."""
-    # Make a copy so we can modify it without affecting other fixtures
     capabilities = test_config.copy()
-
-    # Pop the custom server URL capability so it's not passed to Appium
     appium_server = capabilities.pop('appium_server_url', 'http://localhost:4723')
+    
+    # Remove our custom key and set the app path from our download fixture
+    capabilities.pop("build_download_url", None)
+    if app_path:
+        capabilities['appium:app'] = app_path
 
     options = AppiumOptions()
     options.load_capabilities(capabilities)
@@ -109,11 +143,7 @@ def pytest_runtest_makereport(item, call):
 
     # We only look at the report from the "call" phase (the actual test execution).
     if report.when == 'call' and report.failed:
-        # 'item' is the test item that just ran. 'driver' is the name of our fixture.
         if 'driver' in item.fixturenames:
-            # Get the driver instance from the test item.
             driver_instance = item.funcargs['driver']
-            # Take a screenshot.
             screenshot = driver_instance.get_screenshot_as_png()
-            # Attach the screenshot to the Allure report.
             allure.attach(screenshot, name='screenshot_on_failure', attachment_type=allure.attachment_type.PNG)
