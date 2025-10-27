@@ -1,0 +1,1 @@
+[{"uid":"15fe2ce33027ea77","name":"test_app_launch","time":{"start":1761539641908,"stop":1761539641908,"duration":0},"status":"broken","severity":"normal"},{"uid":"dafd954ab29b5c8a","name":"Testing accessibility node provider","time":{"start":1761539667557,"stop":1761539671175,"duration":3618},"status":"passed","severity":"normal"}]
