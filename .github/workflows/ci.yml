@@ -90,6 +90,9 @@ jobs:
         run: python -m pip install --upgrade pip && pip install -r requirements.txt
       - name: Install iOS Tools
         run: npm install -g appium && npm install -g allure-commandline && appium driver install xcuitest
+
+      - name: List Available Simulators
+        run: xcrun simctl list
       - name: Boot iOS Simulator
         uses: futureware-tech/simulator-action@v3
         with:
