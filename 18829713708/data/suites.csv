@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1","Testing app launch","android.tests","Mon Oct 27 04:21:51 UTC 2025","passed","Mon Oct 27 04:21:51 UTC 2025","TestingAccessibility","test_accessibility","",""
+"","3404","Testing accessibility node provider","android.tests","Mon Oct 27 04:22:05 UTC 2025","passed","Mon Oct 27 04:22:08 UTC 2025","TestingAccessibility","test_accessibility","",""
+"","3502","Testing Accessibility node querying","android.tests","Mon Oct 27 04:22:17 UTC 2025","passed","Mon Oct 27 04:22:20 UTC 2025","TestingAccessibility","test_accessibility","",""
