@@ -2,9 +2,9 @@
 import allure
 from appium.webdriver.common.appiumby import AppiumBy
 # Import the BasePage so our new class can inherit from it.
-from pages.base_page import BasePage
+from android.pages.base_page_android import BasePageAndroid
 
-class HomePage(BasePage):
+class HomePage(BasePageAndroid):
 
     def __init__(self,driver):
         super().__init__(driver)

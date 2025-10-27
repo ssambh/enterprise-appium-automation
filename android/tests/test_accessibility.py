@@ -1,8 +1,8 @@
 import allure
 import pytest
 
-from pages.HomePage import HomePage
-from pages.accessibility_page import AccessibilityPage
+from android.pages.HomePage import HomePage
+from android.pages.accessibility_page import AccessibilityPage
 
 allure.feature("Testing the Accessibility feature")
 class TestingAccessibility:

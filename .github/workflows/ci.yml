@@ -57,13 +57,11 @@ jobs:
           api-level: 34
           script: |
             if [ "${{ github.event.inputs.test_suite }}" = "all" ]; then
-              pytest -o env=${{ lower(github.event.inputs.target_platform) }}_android
+              pytest android/tests/ -o env=${{ lower(github.event.inputs.target_platform) }}
             else
-              pytest -m "${{ github.event.inputs.test_suite }}" -o env=${{ lower(github.event.inputs.target_platform) }}_android
+              pytest android/tests/ -m "${{ github.event.inputs.test_suite }}" -o env=${{ lower(github.event.inputs.target_platform) }}
             fi
-      - name: Generate and Deploy Report
-        if: always()
-        # ... (report steps would be here)
+      # ... (report steps would be here)
 
   test-ios:
     if: contains(github.event.inputs.target_platform, 'iOS')
@@ -89,10 +87,8 @@ jobs:
           shutdown_after: true
           run: |
             if [ "${{ github.event.inputs.test_suite }}" = "all" ]; then
-              pytest -o env=${{ lower(github.event.inputs.target_platform) }}_ios
+              pytest ios/tests/ -o env=${{ lower(github.event.inputs.target_platform) }}
             else
-              pytest -m "${{ github.event.inputs.test_suite }}" -o env=${{ lower(github.event.inputs.target_platform) }}_ios
+              pytest ios/tests/ -m "${{ github.event.inputs.test_suite }}" -o env=${{ lower(github.event.inputs.target_platform) }}
             fi
-      - name: Generate and Deploy Report
-        if: always()
-        # ... (report steps would be here)
+      # ... (report steps would be here)

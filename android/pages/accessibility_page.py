@@ -1,10 +1,10 @@
 import allure
 from appium.webdriver.common.appiumby import AppiumBy
 
-from pages.base_page import BasePage
+from android.pages.base_page_android import BasePageAndroid
 
 
-class AccessibilityPage(BasePage):
+class AccessibilityPage(BasePageAndroid):
     def __init__(self,driver):
         self.driver = driver
         super().__init__(driver)
