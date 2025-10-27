@@ -91,13 +91,6 @@ jobs:
       - name: Install iOS Tools
         run: npm install -g appium && npm install -g allure-commandline && appium driver install xcuitest
 
-      - name: Create and Boot iOS Simulator
-        run: |
-          SIM_UDID=$(xcrun simctl create "TestiPhone" "com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro" "com.apple.CoreSimulator.SimRuntime.iOS-18-4")
-          echo "Created simulator with UDID: $SIM_UDID"
-          xcrun simctl boot "$SIM_UDID"
-          xcrun simctl bootstatus "$SIM_UDID" -b
-
       - name: Run iOS Tests
         if: always()
         run: if [ "${{ github.event.inputs.test_suite }}" = "all" ]; then pytest ios/tests/ -o env=${{ github.event.inputs.target_platform }}; else pytest ios/tests/ -m "${{ github.event.inputs.test_suite }}" -o env=${{ github.event.inputs.target_platform }}; fi

@@ -19,7 +19,8 @@
     "platformName": "iOS",
     "automationName": "XCUITest",
     "platformVersion": "18.4",
-    "deviceName": "iPhone 16 Pro"
+    "deviceName": "iPhone 16 Pro",
+    "appium:simulatorStartupTimeout": 240000
   },
   "Production-iOS": {
     "appium_server_url": "http://localhost:4723",
@@ -27,7 +28,8 @@
     "platformName": "iOS",
     "automationName": "XCUITest",
     "platformVersion": "18.4",
-    "deviceName": "iPhone 16 Pro"
+    "deviceName": "iPhone 16 Pro",
+    "appium:simulatorStartupTimeout": 240000
   },
   "local_android_emulator": {
     "appium_server_url": "http://localhost:4723",
@@ -43,6 +45,7 @@
     "automationName": "XCUITest",
     "platformVersion": "18.4",
     "deviceName": "iPhone 16 Pro",
-    "appium:app": "/path/to/your/app/YourApp.app"
+    "appium:app": "/path/to/your/app/YourApp.app",
+    "appium:simulatorStartupTimeout": 240000
   }
 }
