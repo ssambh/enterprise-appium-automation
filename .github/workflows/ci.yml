@@ -91,12 +91,12 @@ jobs:
       - name: Install iOS Tools
         run: npm install -g appium && npm install -g allure-commandline && appium driver install xcuitest
 
-      - name: Boot iOS Simulator
-        uses: futureware-tech/simulator-action@v3
-        with:
-          model: 'iPhone 16 Pro'
-          os: '18.4'
-          shutdown_after_job: true
+      - name: Create and Boot iOS Simulator
+        run: |
+          SIM_UDID=$(xcrun simctl create "TestiPhone" "com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro" "com.apple.CoreSimulator.SimRuntime.iOS-18-4")
+          echo "Created simulator with UDID: $SIM_UDID"
+          xcrun simctl boot "$SIM_UDID"
+          xcrun simctl bootstatus "$SIM_UDID" -b
 
       - name: Run iOS Tests
         if: always()
