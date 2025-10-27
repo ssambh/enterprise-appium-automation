@@ -1,19 +1,19 @@
 {
-  "qa_android": {
+  "QA-Android": {
     "appium_server_url": "http://localhost:4723",
     "build_download_url": "https://github.com/user/repo/releases/download/latest-qa/app-android-qa.apk",
     "platformName": "Android",
     "platformVersion": "14",
     "automationName": "UiAutomator2"
   },
-  "production_android": {
+  "Production-Android": {
     "appium_server_url": "http://localhost:4723",
     "build_download_url": "https://github.com/user/repo/releases/download/latest-prod/app-android-prod.apk",
     "platformName": "Android",
     "platformVersion": "14",
     "automationName": "UiAutomator2"
   },
-  "qa_ios": {
+  "QA-iOS": {
     "appium_server_url": "http://localhost:4723",
     "build_download_url": "https://github.com/user/repo/releases/download/latest-qa/YourApp-qa.app.zip",
     "platformName": "iOS",
@@ -21,7 +21,7 @@
     "platformVersion": "17.0",
     "deviceName": "iPhone 15"
   },
-  "production_ios": {
+  "Production-iOS": {
     "appium_server_url": "http://localhost:4723",
     "build_download_url": "https://github.com/user/repo/releases/download/latest-prod/YourApp-prod.app.zip",
     "platformName": "iOS",
