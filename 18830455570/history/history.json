@@ -1,0 +1,1 @@
+{"5b980fdc987de67e99388671024cd187":{"statistic":{"failed":0,"broken":1,"skipped":0,"passed":0,"unknown":0,"total":1},"items":[{"uid":"1b5ae1a71627b2b9","status":"broken","statusDetails":"urllib.error.HTTPError: HTTP Error 404: Not Found","time":{"start":1761541540742,"stop":1761541540742,"duration":0}}]}}
