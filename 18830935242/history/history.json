@@ -1,0 +1,1 @@
+{"5b980fdc987de67e99388671024cd187":{"statistic":{"failed":1,"broken":0,"skipped":0,"passed":0,"unknown":0,"total":1},"items":[{"uid":"58f5663cadbcd1ac","status":"failed","statusDetails":"Failed: Could not find a .app file in the unzipped archive.","time":{"start":1761543211699,"stop":1761543211699,"duration":0}}]}}
