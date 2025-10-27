@@ -1,14 +1,14 @@
 {
   "QA-Android": {
     "appium_server_url": "http://localhost:4723",
-    "build_download_url": "https://github.com/user/repo/releases/download/latest-qa/app-android-qa.apk",
+    "build_download_url": "https://github.com/appium/android-apidemos/releases/download/v3.1.0/ApiDemos-debug.apk",
     "platformName": "Android",
     "platformVersion": "14",
     "automationName": "UiAutomator2"
   },
   "Production-Android": {
     "appium_server_url": "http://localhost:4723",
-    "build_download_url": "https://github.com/user/repo/releases/download/latest-prod/app-android-prod.apk",
+    "build_download_url": "https://github.com/appium/android-apidemos/releases/download/v3.1.0/ApiDemos-debug.apk",
     "platformName": "Android",
     "platformVersion": "14",
     "automationName": "UiAutomator2"
