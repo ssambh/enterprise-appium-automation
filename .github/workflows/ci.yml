@@ -91,13 +91,11 @@ jobs:
       - name: Install iOS Tools
         run: npm install -g appium && npm install -g allure-commandline && appium driver install xcuitest
 
-      - name: List Available Simulators
-        run: xcrun simctl list
       - name: Boot iOS Simulator
         uses: futureware-tech/simulator-action@v3
         with:
-          model: 'iPhone 14'
-          os: '16.4'
+          model: 'iPhone 16 Pro'
+          os: '18.4'
           shutdown_after_job: true
 
       - name: Run iOS Tests
