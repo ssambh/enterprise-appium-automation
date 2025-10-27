@@ -90,13 +90,16 @@ jobs:
         run: python -m pip install --upgrade pip && pip install -r requirements.txt
       - name: Install iOS Tools
         run: npm install -g appium && npm install -g allure-commandline && appium driver install xcuitest
-      - name: Run iOS Tests
+      - name: Boot iOS Simulator
         uses: futureware-tech/simulator-action@v3
         with:
-          model: 'iPhone 15'
-          os: '17.0'
-          shutdown_after: true
-          run: if [ "${{ github.event.inputs.test_suite }}" = "all" ]; then pytest ios/tests/ -o env=${{ github.event.inputs.target_platform }}; else pytest ios/tests/ -m "${{ github.event.inputs.test_suite }}" -o env=${{ github.event.inputs.target_platform }}; fi
+          model: 'iPhone 14'
+          os: '16.4'
+          shutdown_after_job: true
+
+      - name: Run iOS Tests
+        if: always()
+        run: if [ "${{ github.event.inputs.test_suite }}" = "all" ]; then pytest ios/tests/ -o env=${{ github.event.inputs.target_platform }}; else pytest ios/tests/ -m "${{ github.event.inputs.test_suite }}" -o env=${{ github.event.inputs.target_platform }}; fi
 
       - name: Generate Allure Report
         if: always()
